@@ -1,10 +1,31 @@
-/* ═══════════════════════════════════════════════════════════════
-   RESET & BASE
-   ═══════════════════════════════════════════════════════════════ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-elev: #1a1a26;
+  --bg-hover: #1f1f2e;
+  --border: #22222f;
+  --border-strong: #2e2e3f;
+  --text: #e8e8f0;
+  --text-muted: #8b8ba3;
+  --text-dim: #5f5f75;
+  --accent: #4a9eff;
+  --accent-hover: #6bb0ff;
+  --accent-soft: rgba(74, 158, 255, 0.12);
+  --accent-glow: rgba(74, 158, 255, 0.35);
+  --purple: #a78bfa;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --pink: #f472b6;
+  --cyan: #22d3ee;
+  --ai-glow: rgba(167, 139, 250, 0.3);
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 }
 
 html {
@@ -22,40 +43,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — DARK THEME
-   ═══════════════════════════════════════════════════════════════ */
-:root {
-  --bg: #0a0a0f;
-  --bg-card: #12121a;
-  --bg-elev: #1a1a26;
-  --bg-hover: #1f1f2e;
-
-  --border: #22222f;
-  --border-strong: #2e2e3f;
-
-  --text: #e8e8f0;
-  --text-muted: #8b8ba3;
-  --text-dim: #5f5f75;
-
-  --accent: #4a9eff;
-  --accent-hover: #6bb0ff;
-  --accent-soft: rgba(74, 158, 255, 0.12);
-  --accent-glow: rgba(74, 158, 255, 0.35);
-
-  --purple: #a78bfa;
-  --green: #4ade80;
-  --amber: #fbbf24;
-  --pink: #f472b6;
-  --cyan: #22d3ee;
-
-  --serif: 'Fraunces', Georgia, serif;
-  --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   BACKGROUND ORBS (atmospheric gradient)
-   ═══════════════════════════════════════════════════════════════ */
+/* Background orbs */
 .bg-orbs {
   position: fixed;
   inset: 0;
@@ -97,9 +85,6 @@ body {
   opacity: 0.15;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   LAYOUT
-   ═══════════════════════════════════════════════════════════════ */
 .container {
   max-width: 1080px;
   margin: 0 auto;
@@ -148,14 +133,13 @@ body {
   max-width: 680px;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   NAVIGATION
-   ═══════════════════════════════════════════════════════════════ */
+/* Navigation */
 .nav {
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(10, 10, 15, 0.72);
   border-bottom: 1px solid var(--border);
 }
@@ -213,9 +197,7 @@ body {
   color: #0a0a0f !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════════════════════════ */
+/* Hero */
 .hero {
   padding: 120px 0 88px;
   position: relative;
@@ -262,7 +244,7 @@ body {
 }
 
 .hero-accent {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 50%, var(--cyan) 100%);
+  background: linear-gradient(135deg, #4a9eff 0%, #a78bfa 50%, #22d3ee 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -318,7 +300,6 @@ body {
   border-color: var(--accent);
 }
 
-/* ─── Stats row ─── */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -331,7 +312,7 @@ body {
   font-family: var(--serif);
   font-size: 54px;
   font-weight: 600;
-  background: linear-gradient(135deg, var(--accent), var(--purple));
+  background: linear-gradient(135deg, #4a9eff, #a78bfa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -346,9 +327,7 @@ body {
   line-height: 1.4;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TECHNICAL EXPERTISE
-   ═══════════════════════════════════════════════════════════════ */
+/* Skill Grid */
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -426,7 +405,40 @@ body {
   border-bottom: none;
 }
 
-/* ─── Domain bar ─── */
+/* AI card - special treatment */
+.skill-card-ai {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(74, 158, 255, 0.06));
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+.skill-card-ai::before {
+  background: radial-gradient(circle at top right, rgba(167, 139, 250, 0.2), transparent 50%);
+  opacity: 0.6;
+}
+
+.skill-card-ai:hover {
+  border-color: var(--purple);
+  box-shadow: 0 12px 40px -12px var(--ai-glow);
+}
+
+.skill-card-ai:hover::before {
+  opacity: 1;
+}
+
+.skill-icon-ai {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(74, 158, 255, 0.2));
+  color: var(--purple);
+  box-shadow: 0 0 20px -5px var(--ai-glow);
+}
+
+.skill-card-ai h3 {
+  background: linear-gradient(135deg, var(--purple), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Domain bar */
 .domain-bar {
   margin-top: 48px;
   padding-top: 40px;
@@ -463,9 +475,7 @@ body {
   background: var(--accent-soft);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   EXPERIENCE
-   ═══════════════════════════════════════════════════════════════ */
+/* Experience */
 .job {
   padding: 48px 0;
   border-top: 1px solid var(--border);
@@ -576,9 +586,7 @@ body {
   letter-spacing: 0.08em;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PROJECTS
-   ═══════════════════════════════════════════════════════════════ */
+/* Projects */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -668,9 +676,7 @@ body {
   line-height: 1.65;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   WRITING
-   ═══════════════════════════════════════════════════════════════ */
+/* Writing */
 .writing-list {
   display: grid;
   gap: 18px;
@@ -773,9 +779,7 @@ body {
   color: var(--accent-hover);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   EDUCATION & CONTACT
-   ═══════════════════════════════════════════════════════════════ */
+/* Education & Contact */
 .edu-contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -908,9 +912,7 @@ body {
   white-space: nowrap;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════════════════════ */
+/* Footer */
 .footer {
   padding: 48px 0 56px;
   text-align: center;
@@ -925,9 +927,7 @@ body {
   color: var(--text-dim);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════════════════════════ */
+/* Responsive */
 @media (max-width: 900px) {
   .skill-grid     { grid-template-columns: repeat(2, 1fr); }
   .project-grid   { grid-template-columns: 1fr; }
